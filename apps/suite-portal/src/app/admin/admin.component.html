@@ -1,0 +1,23 @@
+<ng-container *ngIf="maintenanceRequestLists$ | async as maintenanceRequestLists">
+    <mat-list>
+        <mat-list-item *ngFor="let maintenanceRequest of maintenanceRequestLists | filterClosedRequest">
+            <h3 matLine>
+                Unit number: {{maintenanceRequest.unitNumber}}
+            </h3>
+            <p matLine>
+                Requester name: {{maintenanceRequest.name}}
+            </p>
+            <p matLine>
+                Email: {{maintenanceRequest.email}}
+            </p>
+            <div>
+                <button mat-raised-button color="accent" (click)="onDetailClick(maintenanceRequest)">
+                    Detail
+                </button>
+                <button mat-raised-button color="accent" (click)="onCloseRequestClick(maintenanceRequest)">
+                    Close request
+                </button>
+            </div>
+        </mat-list-item>
+    </mat-list>
+</ng-container>

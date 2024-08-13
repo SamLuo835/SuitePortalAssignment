@@ -3,6 +3,9 @@
   <a mat-button [routerLink]="'home'">Home</a>
   <div class="spacer"></div>
   <a class="admin" mat-button [routerLink]="'admin'">Admin</a>
+  <ng-container *ngIf="authService.isAuthenticated()">
+    <a class="admin" mat-button (click)="logout()">Logout</a>
+  </ng-container>
 </mat-toolbar>
 
 <main>

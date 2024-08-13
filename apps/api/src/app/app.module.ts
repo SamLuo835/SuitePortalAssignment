@@ -3,9 +3,10 @@ import { MaintenanceRequestModule } from '../maintenance-request/maintenance-req
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AdminRequestModule } from '../admin-request/admin-request.module';
 
 @Module({
-  imports: [MaintenanceRequestModule],
+  imports: [MaintenanceRequestModule, AdminRequestModule],
   controllers: [AppController],
   providers: [AppService],
 })

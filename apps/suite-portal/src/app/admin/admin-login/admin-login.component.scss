@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  form.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  button {
+    margin-top: 1rem;
+    align-self: self-end;
+  }
+}
