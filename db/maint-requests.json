@@ -18,7 +18,8 @@
       "name": "sam",
       "email": "samlaw829@gmail.com",
       "details": "",
-      "submittedAt": "2024-08-13T07:51:52.219Z"
+      "submittedAt": "2024-08-13T07:51:52.219Z",
+      "closedAt": "2024-08-13T10:09:59.350Z"
     },
     {
       "id": "oE6OZNfQi_",
@@ -60,6 +61,16 @@
       "email": "ccc@gmail.com",
       "details": "",
       "submittedAt": "2024-08-13T07:59:49.928Z"
+    },
+    {
+      "id": "fWe81eC8Km",
+      "summary": "d21312",
+      "unitNumber": "654",
+      "serviceType": "electrical",
+      "name": "Jane",
+      "email": "jane_doe@gmail.com",
+      "details": "cdcdmvfkvnfk vfnkvndfknvdf",
+      "submittedAt": "2024-08-13T10:27:44.860Z"
     }
   ]
 }

@@ -1,15 +1,7 @@
-import {
-  BadRequestException,
-  Body,
-  Controller,
-  Post,
-  Get,
-  Param,
-} from '@nestjs/common';
+import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
 import {
   AdminLoginRequest,
   AdminLoginResponse,
-  MaintenanceRequest,
 } from '@suiteportal/api-interfaces';
 import { AdminRequestService } from './admin-request.service';
 import jwt from 'jsonwebtoken';
@@ -35,9 +27,8 @@ export class AdminRequestController {
     if (!admin) {
       throw new BadRequestException('Invalid username or password');
     }
-    // Implement JWT token generation
     const token = jwt.sign({ adminId: admin.id }, SECRET_KEY, {
-      expiresIn: '1h',
+      expiresIn: '5m',
     });
     return { token };
   }

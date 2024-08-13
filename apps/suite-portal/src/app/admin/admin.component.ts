@@ -4,8 +4,6 @@ import { MaintenanceRequestRespond } from '@suiteportal/api-interfaces';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MaintenanceRequestDetailDialogComponent } from '../shared/shared-components/maintenance-request-detail-dialog/maintenance-request-detail-dialog.component';
-import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -19,9 +17,7 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private maintenanceService: MaintenanceService,
-    private matDialog: MatDialog,
-    private auth: AuthService,
-    private router: Router
+    private matDialog: MatDialog
   ) {
     //
   }
@@ -33,7 +29,7 @@ export class AdminComponent implements OnInit {
   onDetailClick(maintenanceRequest: MaintenanceRequestRespond): void {
     this.matDialog.open(MaintenanceRequestDetailDialogComponent, {
       data: {
-        requestId: maintenanceRequest.id,
+        requestForm: maintenanceRequest,
       },
     });
   }

@@ -39,20 +39,8 @@ export class MaintenanceService {
       .pipe(catchError((err) => throwError(err)));
   }
 
-  getMaintenanceRequest(id: string): Observable<MaintenanceRequestRespond> {
-    const url = `${MAINTENANCE_SERVICE_BASE_URL}/${id}`;
-    return this.http.get<MaintenanceRequestRespond>(url).pipe(
-      catchError((err) => {
-        if (err.error.message.includes('expired')) {
-          this.auth.logout();
-          this.router.navigate([`/${ADMIN_LOGIN_URL_SEGMENT}`]);
-          return [];
-        } else {
-          throwError(err);
-        }
-      })
-    );
-  }
+  // Below are routes that require token verification,
+  // if the token is expired, the user will be logged out and redirected to the login page
 
   closeMaintenanceRequest(
     request: MaintenanceRequestRespond
@@ -60,21 +48,23 @@ export class MaintenanceService {
     const url = `${MAINTENANCE_SERVICE_BASE_URL}/closeRequest`;
     return this.http
       .patch<Record<string, string>>(url, request)
-      .pipe(catchError((err) => throwError(err)));
+      .pipe(catchError((err) => this.handleTokenExpiredError(err)));
   }
 
   getMaintenanceRequestList(): Observable<MaintenanceRequestRespond[]> {
     const url = `${MAINTENANCE_SERVICE_BASE_URL}/`;
-    return this.http.get<MaintenanceRequestRespond[]>(url).pipe(
-      catchError((err) => {
-        if (err.error.message.includes('expired')) {
-          this.auth.logout();
-          this.router.navigate([`/${ADMIN_LOGIN_URL_SEGMENT}`]);
-          return [];
-        } else {
-          throwError(err);
-        }
-      })
-    );
+    return this.http
+      .get<MaintenanceRequestRespond[]>(url)
+      .pipe(catchError((err) => this.handleTokenExpiredError(err)));
+  }
+
+  private handleTokenExpiredError(error: Record<string, any>) {
+    if (error.error.message.includes('expired')) {
+      this.auth.logout();
+      this.router.navigate([`/${ADMIN_LOGIN_URL_SEGMENT}`]);
+      return [];
+    } else {
+      throwError(error);
+    }
   }
 }

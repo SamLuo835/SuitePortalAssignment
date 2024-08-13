@@ -7,7 +7,10 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
-import { ALL_SERVICE_TYPES } from '@suiteportal/api-interfaces';
+import {
+  ALL_SERVICE_TYPES,
+  MaintenanceRequestRespond,
+} from '@suiteportal/api-interfaces';
 import { MaintenanceService } from '../../../home/services/maintenance.service';
 
 @Component({
@@ -19,7 +22,7 @@ export class MaintenanceFormComponent implements OnChanges {
   serviceTypes = ALL_SERVICE_TYPES;
   backendError: Record<string, string>;
   @Input() inputMode = true;
-  @Input() requestId: string;
+  @Input() requestForm: MaintenanceRequestRespond;
 
   maintenanceForm = this.fb.group({
     summary: ['', Validators.required],
@@ -36,20 +39,13 @@ export class MaintenanceFormComponent implements OnChanges {
     //
   }
   ngOnChanges(simpleChange: SimpleChanges): void {
-    if (simpleChange['requestId']) {
+    if (simpleChange['requestForm']) {
       this.initFormData();
     }
   }
 
   initFormData() {
-    this.maintenanceService.getMaintenanceRequest(this.requestId).subscribe(
-      (res) => {
-        this.maintenanceForm.patchValue(res);
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
+    this.maintenanceForm.patchValue(this.requestForm);
     this.maintenanceForm.disable();
   }
 
