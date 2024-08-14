@@ -9,8 +9,8 @@ import { catchError } from 'rxjs/operators';
 import {
   ADMIN_LOGIN_URL_SEGMENT,
   MAINTENANCE_SERVICE_BASE_URL,
-} from '../../configs/main-config';
-import { AuthService } from '../../services/auth.service';
+} from '../configs/main-config';
+import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
 @Injectable({

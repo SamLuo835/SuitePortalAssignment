@@ -11,7 +11,7 @@ import {
   ALL_SERVICE_TYPES,
   MaintenanceRequestRespond,
 } from '@suiteportal/api-interfaces';
-import { MaintenanceService } from '../../../home/services/maintenance.service';
+import { MaintenanceService } from '../../../services/maintenance.service';
 
 @Component({
   selector: 'app-maintenance-form',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MaintenanceService } from '../home/services/maintenance.service';
+import { MaintenanceService } from '../services/maintenance.service';
 import { MaintenanceRequestRespond } from '@suiteportal/api-interfaces';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';

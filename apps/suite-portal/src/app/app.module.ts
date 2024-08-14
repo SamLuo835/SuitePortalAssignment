@@ -12,7 +12,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from './interceptors/api.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
-import { FilterClosedRequestPipe } from './pipes/filter.pipe';
+import { FilterClosedRequestPipe } from './pipes/filter-closed-request.pipe';
 @NgModule({
   imports: [
     AppRoutingModule,

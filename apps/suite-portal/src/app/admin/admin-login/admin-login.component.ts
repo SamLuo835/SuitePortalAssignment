@@ -5,10 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { AdminService } from '../services/admin.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ADMIN_URL_SEGMENT } from '../../configs/main-config';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-admin-login',
